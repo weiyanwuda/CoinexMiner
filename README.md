@@ -59,7 +59,10 @@ money = "BCH"
 	a. 安装python3(安装的时候 选择添加到系统path)
 		https://www.python.org/downloads/
 
-	b. 安装python有困难的同学可以直接用我打包的exe版本
+	b. 安装requests模块
+		pip install requests
+
+	c. 安装python有困难的同学可以直接用我打包的exe版本
 		https://github.com/flufy3d/CoinexMiner/releases/download/1.0/CoinexMiner1.0.7z
 
 2. 调整 config-example.json 里面的配置参数 (注意 输入的字符全是英文 不要有中文标点符号)
