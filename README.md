@@ -58,9 +58,9 @@ money = "BCH"
 	https://www.python.org/downloads/
 2. 安装的时候 选择添加到系统path
 
-3. 调整 config-example.py 里面的配置参数 (注意 输入的字符全是英文 不要有中文标点符号)
+3. 调整 config-example.json 里面的配置参数 (注意 输入的字符全是英文 不要有中文标点符号)
 
-4. 将 config-example.py 改名 config.py
+4. 将 config-example.json 改名 config.json
 
 5. 
 	打开控制台 输入 python main.py 回车
