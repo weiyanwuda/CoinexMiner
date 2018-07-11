@@ -100,6 +100,7 @@ money = "BCH"
 		pip install requests
 
 3. apikey都配置好了 get_balance 还是失败
+
 	请确保系统时间 已经与互联网时间同步 因为下单要填写时间戳
 	如果和服务器的utc时间相差 1分钟 服务器会拒绝提供服务
 
