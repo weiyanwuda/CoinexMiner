@@ -121,7 +121,7 @@ money = "BCH"
 
 5. 安装python3.7 提示需要升级windows sp1补丁
 
-	请安装老版本的python3[Python 3.4.3](https://www.python.org/downloads/release/python-343/)
+	请安装老版本的python3  [Python 3.4.3](https://www.python.org/downloads/release/python-343/)
 
 
 # 免责声明
