@@ -54,24 +54,24 @@ money = "BCH"
 
 # 快速开始
 
-1. 安装python3
-	https://www.python.org/downloads/
-2. 安装的时候 选择添加到系统path
-	安装python有困难的同学可以直接用我打包的exe版本
-	https://github.com/flufy3d/CoinexMiner/releases/download/1.0/CoinexMiner1.0.7z
+1. 安装运行环境
+	1.1. 安装python3(安装的时候 选择添加到系统path)
+		https://www.python.org/downloads/
 
+	1.2. 安装python有困难的同学可以直接用我打包的exe版本
+		https://github.com/flufy3d/CoinexMiner/releases/download/1.0/CoinexMiner1.0.7z
 
-3. 调整 config-example.json 里面的配置参数 (注意 输入的字符全是英文 不要有中文标点符号)
+2. 调整 config-example.json 里面的配置参数 (注意 输入的字符全是英文 不要有中文标点符号)
 
-4. 将 config-example.json 改名 config.json
+3. 将 config-example.json 改名 config.json
 
-5. 
+4. 
 	打开控制台 输入 python main.py 回车
 	windows 平台也可以直接双击 main.py 运行
 
-6. crtl-c 停止运行
+5. crtl-c 停止运行
 
-7. python balance_cost.py 手动平衡消耗的手续费(程序主动退出或者异常退出后使用)
+6. python balance_cost.py 手动平衡消耗的手续费(程序主动退出或者异常退出后使用)
 
 
 # 问题反馈
