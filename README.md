@@ -89,7 +89,10 @@ money = "BCH"
 	或者参考
 		https://blog.csdn.net/fuchaosz/article/details/78996544
 
+2. ModuleNotFoundError: No module named 'requests'
 
+	手动安装requests模块
+		pip install requests
 
 # 免责声明
  本项目是公益性质 不搞收费版 不搞会员制 纯属coinex爱好者 互相帮助
