@@ -31,12 +31,12 @@ def init_logger():
 
 
 def balance_cost():
-	if records['money_fees'] < 0.001 or records['goods_fees'] < 10.0 :
+	if records['money_fees'] < 0.0001 or records['goods_fees'] < 0.0001 :
 		logging.info('no need to balance the cost')
 		return
 
 	money_markets = 'CET' + config.money
-	logging.info('need buy %s: %0.3f' % (records['money_fees'],config.money))
+	logging.info('need buy %s: %0.3f' % (config.money,records['money_fees']))
 	data = _private_api.get_ticker(money_markets)
 	data = data['data']
 	price = float(data['ticker']['buy'])
@@ -46,7 +46,7 @@ def balance_cost():
 	records['money_fees'] = 0
 	
 	goods_markets = config.market
-	logging.info('need buy %s: %0.3f' % (records['goods_fees'],config.goods))
+	logging.info('need buy %s: %0.3f' % (config.goods,records['goods_fees']))
 	data = _private_api.get_ticker(goods_markets)
 	data = data['data']
 	price = float(data['ticker']['sell'])
