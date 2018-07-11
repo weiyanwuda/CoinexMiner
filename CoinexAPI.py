@@ -6,7 +6,7 @@ import hashlib
 import json as complex_json
 import requests
 import logging
-import time
+
 
 class RequestClient(object):
     __headers = {
