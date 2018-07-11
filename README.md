@@ -80,6 +80,16 @@ money = "BCH"
 2. 通过wechat联系我 wechat_id: kenshin1987
 3. 通过telegram http://t.me/bitcoin_faith
 
+# FAQ
+1. api-ms-win-crt-runtime-|1-1-0.dll 丢失
+
+	安装
+		https://www.microsoft.com/zh-cn/download/details.aspx?id=48145
+
+	或者参考
+		https://blog.csdn.net/fuchaosz/article/details/78996544
+
+
 
 # 免责声明
  本项目是公益性质 不搞收费版 不搞会员制 纯属coinex爱好者 互相帮助
