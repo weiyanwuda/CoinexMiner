@@ -79,7 +79,7 @@ def check_order_state(_type,data):
 			logging.info('check order state: id %d left %0.3f' % (_id,left_amout))
 
 		index = index+1
-		if index > 60*10:
+		if index > 60*config.wait_order:
 			return 'timeout'
 		time.sleep(1)
 
@@ -134,7 +134,7 @@ def need_pause():
 
 	difficulty = float(data['difficulty'])
 	prediction = float(data['prediction'])
-	if prediction > difficulty * 0.95:
+	if prediction > difficulty * config.stop_threshold:
 		logging.info('difficulty %f prediction %f' % (difficulty,prediction))
 		return True
 	else:

@@ -10,6 +10,10 @@
 
 	"wave_ratio" : 1.0,
 
+	"wait_order" : 10,
+
+	"stop_threshold" : 0.9,
+
 	"market" : "CDYBCH",
 
 	"goods" : "CDY",
