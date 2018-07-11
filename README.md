@@ -119,6 +119,11 @@ money = "BCH"
 
 	请确保账户上面 有一定资金 如果下单量小于系统最小限额 下单会失败
 
+5. 安装python3.7 提示需要升级windows sp1补丁
+
+	请安装老版本的python3[Python 3.4.3](https://www.python.org/downloads/release/python-343/)
+
+
 # 免责声明
  本项目是公益性质 不搞收费版 不搞会员制 纯属coinex爱好者 互相帮助
  由本程序带来的收益或者亏损都和项目作者没有关系
