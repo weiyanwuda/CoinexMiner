@@ -63,6 +63,10 @@ money = "BCH"
 
 # 快速开始
 
+1. 申请coinex API
+	
+	[如何申请CoinEx API](https://github.com/flufy3d/CoinexMiner/wiki/%E5%A6%82%E4%BD%95%E7%94%B3%E8%AF%B7-CoinEx-API)
+
 1. 安装运行环境
 
 	a. 安装python3(安装的时候 选择添加到系统path)
