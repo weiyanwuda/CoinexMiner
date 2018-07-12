@@ -70,6 +70,7 @@ def check_order_state(_type,data):
 				records['goods_fees'] = records['goods_fees'] + float(data['deal_fee'])
 
 			logging.info(records)
+			pickle.dump(records,open('cache.data','wb'))
 			return 'done'
 		else:
 			time.sleep(0.5)
