@@ -21,6 +21,7 @@ tmp_data = {}
 tmp_data['tprice_cet_money'] = 0
 tmp_data['tprice_goods_money'] = 0
 tmp_data['predict_cet'] = 0
+tmp_data['prev_api_predict_cet'] = 0.1
 
 def get_self_cet_prediction():
 	money_markets = 'CET' + config.money
@@ -166,6 +167,19 @@ def need_pause():
 
 	difficulty = float(data['difficulty'])
 	prediction = float(data['prediction'])
+
+
+	if prediction == 0 and tmp_data['prev_api_predict_cet'] > 0.1:
+		#difficult reset now
+		logging.info('difficult have reseted! balance the fee cost now')
+		balance_cost()
+		records['balance_cost_time'] = time.time()
+
+
+
+	tmp_data['prev_api_predict_cet'] = prediction
+
+
 	if prediction > difficulty * config.stop_threshold:
 		logging.info('from api. difficulty %f prediction %0.3f' % (difficulty,prediction))
 		return True
@@ -251,8 +265,12 @@ def main():
 
 		cur_time = time.time()
 
-		if cur_time - records['balance_cost_time'] > 60*60:
-			logging.info('balance the fee cost')
+		since_balance_cost_time = (cur_time - records['balance_cost_time'])/60
+
+		logging.info('%0.2f minute ago have executed balance fee cost' % since_balance_cost_time)
+
+		if since_balance_cost_time > 60:
+			logging.info('balance the fee cost. time beyond 1 hour')
 			balance_cost()
 			records['balance_cost_time'] = cur_time
 
