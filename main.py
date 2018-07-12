@@ -75,7 +75,7 @@ def check_order_state(_type,data):
 
 	_id = data['id']
 
-	index = 0
+	start_time = time.time()
 
 	left_amout = float(data['left'])
 
@@ -108,8 +108,8 @@ def check_order_state(_type,data):
 				logging.info(str(e))
 
 
-		index = index+1
-		if index > 60*config.wait_order:
+		elapsed_time = time.time() - start_time
+		if elapsed_time > 60*config.wait_order:
 			return 'timeout'
 		time.sleep(1)
 
