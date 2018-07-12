@@ -5,6 +5,7 @@ import time
 import json
 import pickle
 import config
+import random
 
 
 _private_api = CoinexAPI.PrivateAPI()
@@ -15,6 +16,22 @@ records['money_fees'] = 0
 records['goods_fees'] = 0
 records['balance_cost_time'] = time.time()
 records['variance'] = 1
+
+tmp_data = {}
+tmp_data['tprice_cet_money'] = 0
+tmp_data['tprice_goods_money'] = 0
+tmp_data['predict_cet'] = 0
+
+def get_self_cet_prediction():
+	money_markets = 'CET' + config.money
+	data = _private_api.get_ticker(money_markets)
+	data = data['data']
+	tmp_data['tprice_cet_money'] = float(data['ticker']['buy'])
+	
+	goods_markets = config.market
+	data = _private_api.get_ticker(goods_markets)
+	data = data['data']
+	tmp_data['tprice_goods_money'] = float(data['ticker']['sell'])
 
 def init_logger():
     logging.VERBOSE = 15
@@ -69,7 +86,14 @@ def check_order_state(_type,data):
 			else:
 				records['goods_fees'] = records['goods_fees'] + float(data['deal_fee'])
 
-			logging.info(records)
+			total_money = tmp_data['tprice_goods_money'] * records['goods_fees']
+			total_money = total_money + records['money_fees']
+
+			tmp_data['predict_cet'] = total_money / tmp_data['tprice_cet_money']
+
+			logging.info('mined %0.2f cet; %0.4f m costed; %0.4f g costed' % (tmp_data['predict_cet'],records['money_fees'],records['goods_fees']))
+			
+
 			pickle.dump(records,open('cache.data','wb'))
 			return 'done'
 		else:
@@ -143,10 +167,14 @@ def need_pause():
 	difficulty = float(data['difficulty'])
 	prediction = float(data['prediction'])
 	if prediction > difficulty * config.stop_threshold:
-		logging.info('difficulty %f prediction %f' % (difficulty,prediction))
+		logging.info('from api. difficulty %f prediction %0.3f' % (difficulty,prediction))
 		return True
-	else:
-		return False
+
+	if tmp_data['predict_cet'] > difficulty * config.stop_threshold:
+		logging.info('from self. difficulty %f prediction %0.3f' % (difficulty,tmp_data['predict_cet']))
+		return True
+
+	return False
 
 def update_balance():
 	data = _private_api.get_balances();
@@ -201,6 +229,8 @@ def main():
 		logging.info('no cache file found.')
 
 
+	get_self_cet_prediction()
+
 	while True:
 
 		try:
@@ -215,8 +245,9 @@ def main():
 				time.sleep(5*60)				
 				update_balance()
 
-
-			
+		
+		if random.random() < 0.2:
+			get_self_cet_prediction()
 
 		cur_time = time.time()
 
