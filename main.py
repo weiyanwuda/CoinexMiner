@@ -127,11 +127,13 @@ def need_pause():
 	try:
 		data = _private_api.get_difficulty()
 	except Exception as e:
+		logging.error(str(e))
 		logging.info('need_pause failed try again 1')
 		time.sleep(10)
 		try:
 			data = _private_api.get_difficulty()
 		except Exception as e:
+			logging.error(str(e))
 			logging.info('need_pause failed try again 2')
 			time.sleep(5*60)
 			data = _private_api.get_difficulty()
