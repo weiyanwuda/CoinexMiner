@@ -172,6 +172,7 @@ def need_pause():
 	if prediction == 0 and tmp_data['prev_api_predict_cet'] > 0.1:
 		#difficult reset now
 		logging.info('difficult have reseted! balance the fee cost now')
+		time.sleep(random.random()*10)
 		balance_cost()
 		records['balance_cost_time'] = time.time()
 
