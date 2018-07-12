@@ -118,7 +118,7 @@ def digging():
 				return 'timeout'
 
 		index = index+1
-		if index > 20:
+		if index > 10:
 			return 'maximum'
 		time.sleep(0.05)
 
