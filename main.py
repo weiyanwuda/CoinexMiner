@@ -73,10 +73,15 @@ def check_order_state(_type,data):
 			return 'done'
 		else:
 			time.sleep(0.5)
-			data = _private_api.get_order(config.market,_id)
-			data = data['data']
-			left_amout = float(data['left'])
-			logging.info('check order state: id %d left %0.3f' % (_id,left_amout))
+			try:
+				logging.info('get order state: id %d ' % (_id))
+				data = _private_api.get_order(config.market,_id)
+				data = data['data']
+				left_amout = float(data['left'])
+				logging.info('check order state: id %d left %0.3f' % (_id,left_amout))
+			except Exception as e:
+				logging.info(str(e))
+
 
 		index = index+1
 		if index > 60*config.wait_order:
