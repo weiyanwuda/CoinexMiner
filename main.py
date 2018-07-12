@@ -185,9 +185,11 @@ def balance_cost():
 
 	logging.info(records)
 
+init_logger()
+
 def main():
 	global records
-	init_logger()
+	
 	logging.info('Start Mining!')
 
 	try:
@@ -248,4 +250,8 @@ def main():
 		
 
 if __name__ == "__main__":
-	main()
+	try:
+		main()
+	except Exception as e:
+		logging.error(str(e))
+	

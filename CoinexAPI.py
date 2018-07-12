@@ -54,7 +54,12 @@ class RequestClient(object):
         except Exception as e:
             logging.error(e)
             time.sleep(0.5)
-            return self._request(method,url,params,data,json)
+            try:
+                return self._request(method,url,params,data,json)
+            except Exception as e:
+                logging.error(e)
+                time.sleep(2.5)
+                return self._request(method,url,params,data,json)
   
 
 
