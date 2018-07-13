@@ -81,7 +81,7 @@ money = "BCH"
 		pip install requests
 
 	c. 安装python有困难的同学可以直接用我打包的exe版本
-		[CoinexMiner](https://github.com/flufy3d/CoinexMiner/releases/download/1.3/CoinexMiner1.3.7z)
+		[CoinexMiner](https://github.com/flufy3d/CoinexMiner/releases)
 
 3. 调整 config-example.json 里面的配置参数 (注意 输入的字符全是英文 不要有中文标点符号)
 
