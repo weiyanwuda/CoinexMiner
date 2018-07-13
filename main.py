@@ -100,7 +100,7 @@ def check_order_state(_type,data):
 			pickle.dump(records,open('cache.data','wb'))
 			return 'done'
 		else:
-			time.sleep(0.5)
+			time.sleep(0.3)
 			try:
 				logging.info('get order state: id %d ' % (_id))
 				data = _private_api.get_order(config.market,_id)
@@ -118,7 +118,7 @@ def check_order_state(_type,data):
 			else:
 				records['goods_fees'] = records['goods_fees'] + float(data['deal_fee'])
 			return 'timeout'
-		time.sleep(1)
+		time.sleep(0.1)
 
 
 
