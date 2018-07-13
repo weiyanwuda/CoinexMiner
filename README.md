@@ -5,6 +5,7 @@
 	* 感谢flufy3d 测试CDYBCH交易对
 	* 感谢imcoddy 测试ETHBCH交易对
 	* 感谢shawncd 测试BTCUSDT交易对
+	* 感谢mmbbss888 测试BTMBCH交易对
 2. 交易挖矿有风险
 3. 请先小额测试
 4. 刚开始使用前 请观察程序执行情况 确定安全 再让它自己跑
