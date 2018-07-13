@@ -111,6 +111,10 @@ def check_order_state(_type,data):
 
 		elapsed_time = time.time() - start_time
 		if elapsed_time > 60*config.wait_order:
+			if _type == 'sell':
+				records['money_fees'] = records['money_fees'] + float(data['deal_fee'])
+			else:
+				records['goods_fees'] = records['goods_fees'] + float(data['deal_fee'])
 			return 'timeout'
 		time.sleep(1)
 
