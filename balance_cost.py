@@ -35,16 +35,6 @@ def balance_cost():
 		logging.info('no need to balance the cost')
 		return
 
-	money_markets = 'CET' + config.money
-	logging.info('need buy %s: %0.3f' % (config.money,records['money_fees']))
-	data = _private_api.get_ticker(money_markets)
-	data = data['data']
-	price = float(data['ticker']['buy'])
-	amount = records['money_fees'] / price
-	logging.info('sell %0.3f at %f %s' % (amount,price,money_markets))
-	_private_api.sell(amount,price,money_markets)
-	records['money_fees'] = 0
-	
 	goods_markets = config.market
 	logging.info('need buy %s: %0.3f' % (config.goods,records['goods_fees']))
 	data = _private_api.get_ticker(goods_markets)
@@ -54,6 +44,18 @@ def balance_cost():
 	logging.info('buy %0.3f at %f %s' % (amount,price,goods_markets))
 	_private_api.buy(amount,price,goods_markets)
 	records['goods_fees'] = 0
+
+	_money_cast_buy_goods = amount * price
+
+	money_markets = 'CET' + config.money
+	logging.info('need buy %s: %0.3f' % (config.money,records['money_fees']))
+	data = _private_api.get_ticker(money_markets)
+	data = data['data']
+	price = float(data['ticker']['buy'])
+	amount = (records['money_fees'] + _money_cast_buy_goods) / price
+	logging.info('sell %0.3f at %f %s' % (amount,price,money_markets))
+	_private_api.sell(amount,price,money_markets)
+	records['money_fees'] = 0
 
 	logging.info(records)
 
