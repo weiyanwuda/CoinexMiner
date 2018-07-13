@@ -82,6 +82,8 @@ def check_order_state(_type,data):
 
 	left_amout = float(data['left'])
 
+	index = 0
+
 	while True:
 		if left_amout == 0:
 			if _type == 'sell':
@@ -103,6 +105,7 @@ def check_order_state(_type,data):
 			time.sleep(0.3)
 			try:
 				logging.info('get order state: id %d ' % (_id))
+				index = index + 1
 				data = _private_api.get_order(config.market,_id)
 				data = data['data']
 				left_amout = float(data['left'])
@@ -118,8 +121,13 @@ def check_order_state(_type,data):
 			else:
 				records['goods_fees'] = records['goods_fees'] + float(data['deal_fee'])
 			return 'timeout'
-		time.sleep(0.1)
 
+		if index < 3:
+			time.sleep(0.1)
+		else:
+			time.sleep(5)
+
+		
 
 
 def digging():
