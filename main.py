@@ -232,7 +232,8 @@ def balance_cost():
 	_private_api.buy(amount,price,goods_markets)
 	records['goods_fees'] = 0
 
-	logging.info(records)
+	logging.info('clear predict_cet %0.2f to 0' % tmp_data['predict_cet'])
+	tmp_data['predict_cet'] = 0
 
 init_logger()
 
@@ -282,6 +283,7 @@ def main():
 		if need_pause():
 			logging.info('need_pause mine too much')
 			time.sleep(5)
+			pickle.dump(records,open('cache.data','wb'))
 			continue
 
 		try:
