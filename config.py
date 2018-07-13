@@ -26,3 +26,5 @@ money = data['money']
 wait_order = data['wait_order']
 
 stop_threshold = data['stop_threshold']
+
+first_submit = data["first_submit"]

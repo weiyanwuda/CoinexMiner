@@ -144,10 +144,18 @@ def digging():
 			price_s = price
 			price_b = price * (1 - config.bid_ask_spread/100.0)
 			amount = records['goods_available'] * config.partial_ratio
-			logging.info('sell %0.3f at %0.8f %s' % (amount,price_s,config.market))
-			data_s = _private_api.sell(amount,price_s,config.market)
-			logging.info('buy %0.3f at %0.8f %s' % (amount,price_b,config.market))
-			data_b = _private_api.buy(amount,price_b,config.market)
+
+			if config.first_submit == 'sell':
+				logging.info('sell %0.3f at %0.8f %s' % (amount,price_s,config.market))
+				data_s = _private_api.sell(amount,price_s,config.market)
+				logging.info('buy %0.3f at %0.8f %s' % (amount,price_b,config.market))
+				data_b = _private_api.buy(amount,price_b,config.market)
+			else:
+				logging.info('buy %0.3f at %0.8f %s' % (amount,price_b,config.market))
+				data_b = _private_api.buy(amount,price_b,config.market)	
+				logging.info('sell %0.3f at %0.8f %s' % (amount,price_s,config.market))
+				data_s = _private_api.sell(amount,price_s,config.market)
+
 
 			stats_b = check_order_state('buy',data_b)
 			stats_s = check_order_state('sell',data_s)

@@ -53,6 +53,9 @@ wait_order = 10
 stop_threshold = 0.9
 挖矿停止阈值 因为读取的coinex难度api 已挖cet有一定延迟 可以调小这个值来抵御 默认0.9 已挖cet达到难度的90%就停止
 
+first_submit =  "sell"
+优先提交卖单还是买单  sell就是 先提交卖 buy就是先提交买
+
 market = "CDYBCH"
 挖矿交易对 全大写 也可以是 "BTCUSDT" 等等
 
