@@ -7,6 +7,8 @@ import pickle
 import config
 import random
 
+import importlib
+
 
 _private_api = CoinexAPI.PrivateAPI()
 
@@ -253,6 +255,9 @@ def main():
 
 	while True:
 
+		#runtime load config
+		importlib.reload(config)
+
 		try:
 			update_balance()
 		except Exception as e:
@@ -264,7 +269,6 @@ def main():
 				logging.info('update_balance failed try again 2')
 				time.sleep(5*60)				
 				update_balance()
-
 		
 		if random.random() < 0.2:
 			get_self_cet_prediction()
