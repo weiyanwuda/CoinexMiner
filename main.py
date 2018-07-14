@@ -146,15 +146,16 @@ def digging():
 			amount = records['goods_available'] * config.partial_ratio
 
 			if config.first_submit == 'sell':
-				logging.info('sell %0.3f at %0.8f %s' % (amount,price_s,config.market))
 				data_s = _private_api.sell(amount,price_s,config.market)
-				logging.info('buy %0.3f at %0.8f %s' % (amount,price_b,config.market))
 				data_b = _private_api.buy(amount,price_b,config.market)
-			else:
-				logging.info('buy %0.3f at %0.8f %s' % (amount,price_b,config.market))
-				data_b = _private_api.buy(amount,price_b,config.market)	
 				logging.info('sell %0.3f at %0.8f %s' % (amount,price_s,config.market))
+				logging.info('buy %0.3f at %0.8f %s' % (amount,price_b,config.market))
+
+			else:
+				data_b = _private_api.buy(amount,price_b,config.market)	
 				data_s = _private_api.sell(amount,price_s,config.market)
+				logging.info('buy %0.3f at %0.8f %s' % (amount,price_b,config.market))
+				logging.info('sell %0.3f at %0.8f %s' % (amount,price_s,config.market))
 
 
 			stats_b = check_order_state('buy',data_b)
